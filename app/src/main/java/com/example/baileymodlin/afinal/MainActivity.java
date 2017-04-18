@@ -65,11 +65,17 @@ public class MainActivity extends AppCompatActivity {
     public void changeActivity(int id){
         switch (id){
             case 0:
-                Intent intent = new Intent(this, DashLightActivity.class);
-                startActivity(intent);
+                Intent intent0 = new Intent(this, DashLightActivity.class);
+                startActivity(intent0);
                 break;
-            case 1: ; break;
-            case 2: ; break;
+            case 1:
+                Intent intent1 = new Intent(this, CheckEngineActivity.class);
+                startActivity(intent1);
+                break;
+            case 2:
+                Intent intent2 = new Intent(this, DataLogActivity.class);
+                startActivity(intent2);
+                break;
 
         }
     }

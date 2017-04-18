@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DashLightActivity"></activity>
+        <activity android:name=".DashLightActivity" />
+        <activity android:name=".CheckEngineActivity" />
+        <activity android:name=".DataLogActivity"></activity>
     </application>
 
 </manifest>
