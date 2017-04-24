@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tool_bar_menu">
     <item
-        android:id="@+id/cel_menu"
-        android:title="@string/cel_codes"
+        android:id="@+id/mechanic_menu"
+        android:title="@string/mechanic_menu"
         app:showAsAction="never" />
     <item
-        android:id="@+id/datalog_menu"
-        android:title="@string/datalog"
+        android:id="@+id/gas_station_menu"
+        android:title="@string/gas_station_menu"
         app:showAsAction="never" />
     <item
-        android:id="@+id/dash_light_menu"
-        android:title="@string/engine_light"
+        android:id="@+id/dealership_menu"
+        android:title="@string/dealership_menu"
         app:showAsAction="never" />
 </menu>

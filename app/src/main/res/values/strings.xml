@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">Final</string>
+    <string name="app_name">What\'s wrong with my car?</string>
     <string name="engine_light">Search by dash light</string>
     <string name="cel_codes">Check Engine Codes</string>
     <string name="datalog">Data Log Engine activity</string>
+    <string name="mechanic_menu">Find a mechanic</string>
+    <string name="gas_station_menu">Find a gas station</string>
+    <string name="dealership_menu">Find a dealership</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
