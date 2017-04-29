@@ -100,7 +100,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem){
         int itemId = menuItem.getItemId();
+        Intent mech = new Intent(this, MapsActivity.class);
         switch (itemId){
+            case R.id.mechanic_menu:
+
+                startActivity(mech);
+                break;
+            case R.id.gas_station_menu:
+                startActivity(mech);
+                break;
+            case R.id.dealership_menu:
+                startActivity(mech);
+                break;
 
         }
         return false;

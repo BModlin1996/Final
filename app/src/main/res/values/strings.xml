@@ -7,4 +7,9 @@
     <string name="gas_station_menu">Find a gas station</string>
     <string name="dealership_menu">Find a dealership</string>
     <string name="title_activity_maps">Map</string>
+    <string name="air_fuel_label">Air/Fuel Ratio</string>
+    <string name="engine_rpm">Engine RPM</string>
+    <string name="intake_temp">IAT</string>
+    <string name="fuel">Fuel Pressure</string>
+    <string name="air_pressure">Vacuum/Boost</string>
 </resources>
