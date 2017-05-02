@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -47,19 +48,20 @@ public class CheckEngineActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.checkEngineToolbar);
         celCode = (EditText) findViewById(R.id.celEditText);
         setSupportActionBar(toolbar);
-        setUpBluetoothDevie();
-        connectBluetoothDevive();
+        setUpBluetoothDevice();
+        connectBluetoothDevice();
         getData();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
 
-    private  void  setUpBluetoothDevie(){
 
+    private  void  setUpBluetoothDevice(){
         //Connect Bluetooth device
-        deviceString = new ArrayList();
-        devices = new ArrayList();
+        ArrayList deviceString = new ArrayList();
+        final ArrayList devices = new ArrayList();
+
         BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
 
         Set<BluetoothDevice> pairedDevices = btAdapter.getBondedDevices();
@@ -79,45 +81,50 @@ public class CheckEngineActivity extends AppCompatActivity {
                 int pos = ((AlertDialog) dialogInterface).getListView().getCheckedItemPosition();
                 deviceAddress = (String) devices.get(pos);
             }
-
         });
-        alert.setTitle("Select a bluetooth device");
+
+        alert.setTitle("Choose Bluetooth device");
         alert.show();
     }
 
-    private void connectBluetoothDevive(){
+    private void connectBluetoothDevice(){
         //Save Bluetooth device
         BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        BluetoothDevice device = btAdapter.getRemoteDevice(deviceAddress);
+        BluetoothDevice device = btAdapter.getRemoteDevice("00:1D:A5:00:F7:61");
 
         UUID uuid = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
-        try {
+        try{
             socket = device.createInsecureRfcommSocketToServiceRecord(uuid);
             socket.connect();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void getData(){
         try {
+            Thread thread = new Thread();
             new EchoOffCommand().run(socket.getInputStream(), socket.getOutputStream());
             new LineFeedOffCommand().run(socket.getInputStream(), socket.getOutputStream());
             new SelectProtocolCommand(ObdProtocols.AUTO).run(socket.getInputStream(), socket.getOutputStream());
+            //Trouble codes
             TroubleCodesCommand troubleCodesCommand = new TroubleCodesCommand();
-            while (!Thread.currentThread().isInterrupted()) {
-                troubleCodesCommand.run(socket.getInputStream(), socket.getOutputStream());
-                celCode.setText(troubleCodesCommand.getFormattedResult());
+            while (!thread.currentThread().isInterrupted()) {
+
+                Log.d("DEBUG_0", "RPM: " + troubleCodesCommand.getFormattedResult());
+
+
             }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
