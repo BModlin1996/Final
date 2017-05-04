@@ -11,5 +11,6 @@
     <string name="engine_rpm">Engine RPM</string>
     <string name="intake_temp">IAT</string>
     <string name="fuel">Fuel Pressure</string>
-    <string name="air_pressure">Vacuum/Boost</string>
+    <string name="air_pressure">Barometric Pressure</string>
+    <string name="trouble codes">Trouble codes</string>
 </resources>
