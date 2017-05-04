@@ -12,5 +12,5 @@
     <string name="intake_temp">IAT</string>
     <string name="fuel">Fuel Pressure</string>
     <string name="air_pressure">Barometric Pressure</string>
-    <string name="trouble codes">Trouble codes</string>
+    <string name="trouble_codes">Trouble codes</string>
 </resources>
